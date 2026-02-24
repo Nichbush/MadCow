@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Player
+class_name MyPlayer
 
 @export var speed = 250
 @export var tile_layer : TileMapLayer
