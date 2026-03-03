@@ -1,13 +1,13 @@
 extends TextureProgressBar
 
 #bring player here
-@export var player: Player 
+@onready var stats : Stats = $Stats
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#recieve update signal
-	player.healthChanged.connect(update)
+	stats.health_changed.connect(update)
 	update()
 
 
@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 	
 #update healthbar
 func update():
-	value = player.currentHealth * 100 / player.maxHealth
+	value = stats.current_health * 100 / stats.max_health
