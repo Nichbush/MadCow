@@ -23,10 +23,11 @@ var buffer = 32
 #health bar
 @export var maxHealth = 100
 @onready var currentHealth: int = maxHealth
-signal healthChanged
-#use healthChanged.emit whenever player takes damage to update healthbar.
+@onready var stats = $Stats
+@onready var health_bar = $"../CanvasLayer/HealthBar"
 
 func _ready():
+	health_bar.set_stats(stats)
 	if tile_layer == null:
 		return
 		

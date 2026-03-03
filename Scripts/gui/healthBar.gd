@@ -1,7 +1,11 @@
 extends TextureProgressBar
 
-#bring player here
-@onready var stats : Stats = $Stats
+var stats : Stats
+
+func set_stats(s: Stats):
+	stats = s
+	stats.health_changed.connect(update)
+	update()
 
 
 # Called when the node enters the scene tree for the first time.
