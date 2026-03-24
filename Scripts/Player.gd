@@ -24,7 +24,7 @@ var buffer = 32
 @export var maxHealth = 100
 @onready var currentHealth: int = maxHealth
 @onready var stats = $Stats
-@onready var health_bar = $"../CanvasLayer/HealthBar"
+@onready var health_bar = $"../CanvasLayer/TextureProgressBar"
 
 func _ready():
 	health_bar.set_stats(stats)
@@ -44,4 +44,3 @@ func _physics_process(_delta: float):
 	#Map wrapping logic
 	position.x = wrapf(position.x, min_x - buffer, max_x + buffer)
 	position.y = wrapf(position.y, min_y - buffer, max_y + buffer)
-	
