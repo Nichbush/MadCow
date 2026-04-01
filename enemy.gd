@@ -14,6 +14,7 @@ func _ready():
 	else:
 		print("Still can't find 'player' group. Double-check the Player node.")
 		
+		
 func _physics_process(_delta):
 	if player:
 		var direction = (player.global_position - global_position).normalized()

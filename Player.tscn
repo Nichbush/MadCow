@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbsf7dfgvlklu"]
 
 [ext_resource type="Script" uid="uid://b80aukyy27j1y" path="res://Scripts/Player.gd" id="1_kpjcp"]
+[ext_resource type="PackedScene" uid="uid://nrkijldp2v2s" path="res://bullet.tscn" id="2_e80uo"]
 [ext_resource type="Texture2D" uid="uid://buy14onrf5hpn" path="res://Sprites/FarmerCharacter/FarmerCharacterSpriteSheet1.png" id="2_kpjcp"]
 [ext_resource type="Script" uid="uid://bdahw0rmu7nw8" path="res://Scripts/stats.gd" id="3_kne1u"]
 
@@ -104,6 +105,7 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=843959330 groups=["player"]]
 z_index = 1
 script = ExtResource("1_kpjcp")
+bullet_scene = ExtResource("2_e80uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1047318140]
 shape = SubResource("CapsuleShape2D_kpjcp")

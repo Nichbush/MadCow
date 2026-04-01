@@ -4,6 +4,8 @@ class_name Player
 
 @export var speed = 250
 @export var tile_layer : TileMapLayer
+@export var bullet_scene : PackedScene
+
 
 var min_x = 0
 var min_y = 0
@@ -37,6 +39,25 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+	
+	# NEW: Shooting logic
+	if Input.is_action_just_pressed("fire"): # Or "shoot" if you defined it
+		shoot()
+		
+func shoot():
+	if bullet_scene:
+		var bullet = bullet_scene.instantiate()
+		
+		# Use global_position to avoid math errors if player is parented to something else
+		bullet.global_position = global_position
+		
+		# Make it face the mouse so it actually has a direction to fly in
+		bullet.look_at(get_global_mouse_position())
+		
+		# Add it to the level so it moves independently of the player
+		get_parent().add_child(bullet)
+	else:
+		print("Don't forget to drag the bullet.tscn into the Inspector!")
 	
 func _physics_process(_delta: float):
 	get_input()
