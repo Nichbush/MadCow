@@ -23,17 +23,19 @@ size = Vector2(9, 7)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=723109850]
 z_index = 1
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_s7bn3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=642744109]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2hac7")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1977837734]
+[node name="Detection" type="Area2D" parent="." unique_id=1977837734]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=727452952]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" unique_id=727452952]
 position = Vector2(3.5, 3.5)
 shape = SubResource("RectangleShape2D_s7bn3")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_area_2d_body_entered"]

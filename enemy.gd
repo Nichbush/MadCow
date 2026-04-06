@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 150.0
+@export var speed = 50.0
 var player = null
 
 func _ready():
@@ -13,6 +13,7 @@ func _ready():
 		print("Found player! Chase initiated.")
 	else:
 		print("Still can't find 'player' group. Double-check the Player node.")
+		
 		
 func _physics_process(_delta):
 	if player:

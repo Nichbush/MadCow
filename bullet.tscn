@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://nrkijldp2v2s"]
+
+[ext_resource type="Script" uid="uid://bhv22wt5cen5b" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://b2er2eq7ce2uo" path="res://Sprites/FarmerCharacter/Bullet.png" id="2_v8qja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2b2rl"]
+radius = 2.0
+
+[node name="Area2D" type="Area2D" unique_id=2060107874]
+z_index = 1
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2145985736]
+texture_filter = 1
+texture = ExtResource("2_v8qja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356843537]
+shape = SubResource("CircleShape2D_2b2rl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
