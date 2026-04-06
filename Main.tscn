@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://3ad73krju8p" path="res://Scripts/gui/healthBar.gd" id="5_lgr22"]
 [ext_resource type="Texture2D" uid="uid://8bpfu0yryy87" path="res://Sprites/ProgressBarSprites/ExperienceBarOver.png" id="7_03owx"]
 [ext_resource type="PackedScene" uid="uid://bnj8ml50l1ycv" path="res://Enemy.tscn" id="7_lgr22"]
+[ext_resource type="Script" uid="uid://c3ri0ksg6bn4i" path="res://health_label.gd" id="7_wkp8b"]
 [ext_resource type="Script" uid="uid://ba70w5ljj8cyv" path="res://experience_bar.gd" id="8_wkp8b"]
+[ext_resource type="Script" uid="uid://b3kiwtjf7x0v8" path="res://experience_label.gd" id="10_20pc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_fos0i")
@@ -141,6 +143,13 @@ texture_under = ExtResource("3_fos0i")
 texture_progress = ExtResource("4_3dxm6")
 script = ExtResource("5_lgr22")
 
+[node name="Health_Label" type="Label" parent="CanvasLayer/HealthBar" unique_id=683118471]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 27.0
+offset_bottom = 89.0
+script = ExtResource("7_wkp8b")
+
 [node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1009998318]
 offset_left = 22.0
 offset_top = 1.0
@@ -150,6 +159,14 @@ fill_mode = 3
 texture_under = ExtResource("3_fos0i")
 texture_progress = ExtResource("7_03owx")
 script = ExtResource("8_wkp8b")
+
+[node name="Experience_Label" type="Label" parent="CanvasLayer/ExperienceBar" unique_id=209359398]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 64.0
+offset_right = 30.0
+offset_bottom = 87.0
+script = ExtResource("10_20pc6")
 
 [node name="Chicken1" parent="." unique_id=723109850 instance=ExtResource("7_lgr22")]
 position = Vector2(235, 433)

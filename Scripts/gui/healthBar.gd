@@ -1,6 +1,10 @@
 extends TextureProgressBar
 
+signal label_changed()
+
 var stats : Stats
+var current
+var max
 
 func set_stats(s: Stats):
 	stats = s
@@ -21,4 +25,7 @@ func _process(delta: float) -> void:
 	
 #update healthbar
 func update():
-	value = stats.current_health * 100 / stats.max_health
+	current = stats.current_health
+	max = stats.max_health
+	value = current * 100 / max
+	$Health_Label.update_label()

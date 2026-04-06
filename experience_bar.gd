@@ -3,6 +3,8 @@ extends TextureProgressBar
 
 
 var stats : Stats
+var current
+var next
 
 func set_stats(s: Stats):
 	stats = s
@@ -23,4 +25,6 @@ func _process(delta: float) -> void:
 	
 #update healthbar
 func update():
-	value = stats.experience * 100 / stats.experience_required
+	current = stats.experience
+	next = stats.experience_required
+	value = current * 100 / next
