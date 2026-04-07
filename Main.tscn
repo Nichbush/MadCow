@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c3ri0ksg6bn4i" path="res://health_label.gd" id="7_wkp8b"]
 [ext_resource type="Script" uid="uid://ba70w5ljj8cyv" path="res://experience_bar.gd" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://b3kiwtjf7x0v8" path="res://experience_label.gd" id="10_20pc6"]
+[ext_resource type="Script" uid="uid://ln0iocaw280" path="res://enemy_spawn.gd" id="12_5vvyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_fos0i")
@@ -168,14 +169,25 @@ offset_right = 30.0
 offset_bottom = 87.0
 script = ExtResource("10_20pc6")
 
-[node name="Chicken1" parent="." unique_id=723109850 instance=ExtResource("7_lgr22")]
-position = Vector2(235, 433)
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1677887096]
+position = Vector2(1131, 21)
+script = ExtResource("12_5vvyt")
+enemy_scene = ExtResource("7_lgr22")
 
-[node name="CharacterBody2D" parent="." unique_id=427426504 instance=ExtResource("7_lgr22")]
-position = Vector2(473, 478)
+[node name="Timer" type="Timer" parent="SpawnPoints" unique_id=1250950870]
+autostart = true
 
-[node name="CharacterBody2D2" parent="." unique_id=694747818 instance=ExtResource("7_lgr22")]
-position = Vector2(214, 496)
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1260809844]
 
-[node name="CharacterBody2D3" parent="." unique_id=1437352778 instance=ExtResource("7_lgr22")]
-position = Vector2(332, 391)
+[node name="SpawnPoints2" type="Node2D" parent="." unique_id=126970483]
+position = Vector2(24, 629)
+script = ExtResource("12_5vvyt")
+enemy_scene = ExtResource("7_lgr22")
+
+[node name="Timer" type="Timer" parent="SpawnPoints2" unique_id=541806632]
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints2" unique_id=966738495]
+
+[connection signal="timeout" from="SpawnPoints/Timer" to="SpawnPoints" method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnPoints2/Timer" to="SpawnPoints2" method="_on_timer_timeout"]
