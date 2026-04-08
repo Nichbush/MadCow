@@ -30,6 +30,7 @@ var buffer = 32
 @onready var experience_bar = $"../CanvasLayer/ExperienceBar"
 
 func _ready():
+
 	health_bar.set_stats(stats)
 	if tile_layer == null:
 		return

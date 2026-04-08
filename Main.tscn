@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://c3ri0ksg6bn4i" path="res://health_label.gd" id="7_wkp8b"]
 [ext_resource type="Script" uid="uid://ba70w5ljj8cyv" path="res://experience_bar.gd" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://b3kiwtjf7x0v8" path="res://experience_label.gd" id="10_20pc6"]
+[ext_resource type="Script" uid="uid://c1lqcsjfl3ix6" path="res://world_time.gd" id="11_c2ibq"]
 [ext_resource type="Script" uid="uid://ln0iocaw280" path="res://enemy_spawn.gd" id="12_5vvyt"]
+[ext_resource type="Script" uid="uid://bvi0cwe1ny8io" path="res://word_time_label.gd" id="12_j4qnp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_fos0i")
@@ -146,9 +148,10 @@ script = ExtResource("5_lgr22")
 
 [node name="Health_Label" type="Label" parent="CanvasLayer/HealthBar" unique_id=683118471]
 layout_mode = 0
-offset_top = 66.0
-offset_right = 27.0
-offset_bottom = 89.0
+offset_left = 2.0
+offset_top = 64.0
+offset_right = 29.0
+offset_bottom = 87.0
 script = ExtResource("7_wkp8b")
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1009998318]
@@ -163,11 +166,23 @@ script = ExtResource("8_wkp8b")
 
 [node name="Experience_Label" type="Label" parent="CanvasLayer/ExperienceBar" unique_id=209359398]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 64.0
-offset_right = 30.0
-offset_bottom = 87.0
+offset_left = 3.0
+offset_top = 63.0
+offset_right = 29.0
+offset_bottom = 86.0
+horizontal_alignment = 1
 script = ExtResource("10_20pc6")
+
+[node name="World_Time" type="Timer" parent="CanvasLayer" unique_id=255530260]
+script = ExtResource("11_c2ibq")
+
+[node name="Word_Time_Label" type="Label" parent="CanvasLayer/World_Time" unique_id=1710285915]
+offset_left = 550.0
+offset_top = 1.0
+offset_right = 625.0
+offset_bottom = 24.0
+horizontal_alignment = 1
+script = ExtResource("12_j4qnp")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1677887096]
 position = Vector2(1131, 21)
