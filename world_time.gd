@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	time_label = int($".".time_left)
 	$Word_Time_Label.update_label()
 	
