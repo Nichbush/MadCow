@@ -22,8 +22,6 @@ func _ready():
 		update()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
 #update healthbar
 func update():
 	current = stats.experience
