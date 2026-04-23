@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bdahw0rmu7nw8" path="res://Scripts/stats.gd" id="3_kne1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpjcp"]
-radius = 6.0
+radius = 7.0
 height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]

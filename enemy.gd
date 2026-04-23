@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed = 50.0
-@export var health = 30
+@export var health = 10
 var player = null
 
 func _ready():
@@ -46,8 +46,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var stats = body.get_node_or_null("Stats")
 		
 		if stats:
-			# Call your function!
-			stats.take_damage(10) # 10 is the damage amount
+			
+			stats.take_damage(10) 
 			var knockback_direction = (global_position - body.global_position).normalized()
 			global_position += knockback_direction * 20
 			print("Chicken pecked you! Health is now: ", stats.current_health)

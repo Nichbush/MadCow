@@ -29,6 +29,8 @@ var buffer = 32
 @onready var health_bar = $"../CanvasLayer/HealthBar"
 @onready var experience_bar = $"../CanvasLayer/ExperienceBar"
 
+@export var fire_rate : float = 1.5 # Time in seconds between shots
+var can_shoot : bool = true
 func _ready():
 	health_bar.set_stats(stats)
 	if tile_layer == null:
@@ -41,11 +43,13 @@ func get_input():
 	velocity = input_direction * speed
 	
 	# NEW: Shooting logic
-	if Input.is_action_just_pressed("fire"): # Or "shoot" if you defined it
+	if Input.is_action_just_pressed("fire") and can_shoot:
 		shoot()
 		
 func shoot():
 	if bullet_scene:
+		can_shoot = false
+		
 		var bullet = bullet_scene.instantiate()
 		
 		# Use global_position to avoid math errors if player is parented to something else
@@ -56,6 +60,10 @@ func shoot():
 		
 		# Add it to the level so it moves independently of the player
 		get_parent().add_child(bullet)
+		
+		# Create a one-shot timer to re-enable shooting
+		await get_tree().create_timer(fire_rate).timeout
+		can_shoot = true
 	else:
 		print("Don't forget to drag the bullet.tscn into the Inspector!")
 	
