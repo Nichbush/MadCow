@@ -30,7 +30,6 @@ var buffer = 32
 @onready var experience_bar = $"../CanvasLayer/ExperienceBar"
 
 func _ready():
-
 	health_bar.set_stats(stats)
 	if tile_layer == null:
 		return
@@ -67,3 +66,7 @@ func _physics_process(_delta: float):
 	#Map wrapping logic
 	position.x = wrapf(position.x, min_x - buffer, max_x + buffer)
 	position.y = wrapf(position.y, min_y - buffer, max_y + buffer)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		stats.increase_level()

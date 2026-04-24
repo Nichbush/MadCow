@@ -51,12 +51,28 @@ func increase_level():
 	level += 1
 	experience_required = int(experience_required * 1.5)
 
-	# Stat growth
-	max_health += 20
-	damage += 5
-
 	current_health = max_health
 
 	emit_signal("level_up", level)
 	emit_signal("health_changed")
 	emit_signal("experience_changed")
+
+enum UpgradeType {
+	HEALTH,
+	DAMAGE,
+	DEFENSE
+}
+
+func apply_upgrade(type: int):
+	match type:
+		UpgradeType.HEALTH:
+			max_health += 20
+			current_health = max_health
+
+		UpgradeType.DAMAGE:
+			damage += 5
+
+		UpgradeType.DEFENSE:
+			defense += 2
+
+	emit_signal("health_changed")
