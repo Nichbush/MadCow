@@ -3,9 +3,10 @@ extends Control
 var stats: Stats
 
 func _ready():
-	$HealthButton.pressed.connect(_on_health)
-	$DamageButton.pressed.connect(_on_damage)
-	$DefenseButton.pressed.connect(_on_defense)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	$Panel/HBoxContainer/HealthButton.pressed.connect(_on_health)
+	$Panel/HBoxContainer/DamageButton.pressed.connect(_on_damage)
+	$Panel/HBoxContainer/DefenseButton.pressed.connect(_on_defense)
 
 func _on_health():
 	stats.apply_upgrade(Stats.UpgradeType.HEALTH)

@@ -5,21 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://wv5a5xioyl8c" path="res://Sprites/UpgradeButtons/Health.png" id="2_6w8xc"]
 [ext_resource type="Texture2D" uid="uid://ddqsvr5g6kl00" path="res://Sprites/UpgradeButtons/UpgradeButtonBackground.png" id="2_tlmoe"]
 
-[sub_resource type="GDScript" id="GDScript_a0bff"]
-script/source = "extends TextureButton
-
-var stats: Stats
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-func _on_pressed() -> void:
-	choose_upgrade(Stats.UpgradeType.HEALTH)
-	get_tree().change_scene_to_file(\"res://Main.tscn\")
-"
-
 [node name="Control" type="Control" unique_id=32945539]
 layout_mode = 3
 anchors_preset = 15
@@ -61,12 +46,11 @@ offset_bottom = 25.75
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthButton" type="TextureButton" parent="Panel/HBoxContainer" unique_id=709091161]
+[node name="HealthButton" type="TextureButton" parent="Panel/HBoxContainer" unique_id=2093528622]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("2_tlmoe")
 stretch_mode = 0
-script = SubResource("GDScript_a0bff")
 
 [node name="Health" type="Sprite2D" parent="Panel/HBoxContainer" unique_id=336280593]
 position = Vector2(28.126709, 24.75)
