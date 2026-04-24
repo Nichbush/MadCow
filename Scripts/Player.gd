@@ -32,7 +32,6 @@ var buffer = 32
 @export var fire_rate : float = 1.5 # Time in seconds between shots
 var can_shoot : bool = true
 func _ready():
-
 	health_bar.set_stats(stats)
 	if tile_layer == null:
 		return
@@ -75,3 +74,7 @@ func _physics_process(_delta: float):
 	#Map wrapping logic
 	position.x = wrapf(position.x, min_x - buffer, max_x + buffer)
 	position.y = wrapf(position.y, min_y - buffer, max_y + buffer)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		stats.increase_level()
