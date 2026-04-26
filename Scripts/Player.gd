@@ -29,10 +29,8 @@ var buffer = 32
 @onready var health_bar = $"../CanvasLayer/HealthBar"
 @onready var experience_bar = $"../CanvasLayer/ExperienceBar"
 
-@export var fire_rate : float = 1.5 # Time in seconds between shots
-var can_shoot : bool = true
 func _ready():
-
+	stats.level_up.connect(_on_level_up)
 	health_bar.set_stats(stats)
 	if tile_layer == null:
 		return
@@ -44,13 +42,11 @@ func get_input():
 	velocity = input_direction * speed
 	
 	# NEW: Shooting logic
-	if Input.is_action_just_pressed("fire") and can_shoot:
+	if Input.is_action_just_pressed("fire"): # Or "shoot" if you defined it
 		shoot()
 		
 func shoot():
 	if bullet_scene:
-		can_shoot = false
-		
 		var bullet = bullet_scene.instantiate()
 		
 		# Use global_position to avoid math errors if player is parented to something else
@@ -61,10 +57,6 @@ func shoot():
 		
 		# Add it to the level so it moves independently of the player
 		get_parent().add_child(bullet)
-		
-		# Create a one-shot timer to re-enable shooting
-		await get_tree().create_timer(fire_rate).timeout
-		can_shoot = true
 	else:
 		print("Don't forget to drag the bullet.tscn into the Inspector!")
 	
@@ -75,3 +67,14 @@ func _physics_process(_delta: float):
 	#Map wrapping logic
 	position.x = wrapf(position.x, min_x - buffer, max_x + buffer)
 	position.y = wrapf(position.y, min_y - buffer, max_y + buffer)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		stats.increase_level()
+
+func _on_level_up(new_level):
+	get_tree().paused = true
+
+	var ui = preload("res://Upgrade.tscn").instantiate()
+	ui.stats = stats
+	add_child(ui)
