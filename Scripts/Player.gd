@@ -55,6 +55,9 @@ func shoot():
 		# Make it face the mouse so it actually has a direction to fly in
 		bullet.look_at(get_global_mouse_position())
 		
+		#pass player damage into bullet
+		bullet.damage = stats.damage
+		
 		# Add it to the level so it moves independently of the player
 		get_parent().add_child(bullet)
 	else:
@@ -68,13 +71,14 @@ func _physics_process(_delta: float):
 	position.x = wrapf(position.x, min_x - buffer, max_x + buffer)
 	position.y = wrapf(position.y, min_y - buffer, max_y + buffer)
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		stats.increase_level()
+#Debug test to level up
+#func _process(delta):
+	#if Input.is_action_just_pressed("ui_accept"):
+		#stats.increase_level()
 
 func _on_level_up(new_level):
 	get_tree().paused = true
 
 	var ui = preload("res://Upgrade.tscn").instantiate()
 	ui.stats = stats
-	add_child(ui)
+	get_tree().get_root().get_node("World/CanvasLayer").add_child(ui)
